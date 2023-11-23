@@ -1,0 +1,12 @@
+{
+    "ABC123": [
+        "Taller1: 2022-01-10: Cambio de aceite y filtro.",
+        "Taller2: 2022-02-15: Reemplazo de la bujía.",
+        "Taller3: 2022-04-20: Alineación de ruedas y ajuste de frenos."
+    ],
+    "XYZ789": [
+        "Taller1: 2022-03-05: Limpieza del carburador.",
+        "Taller2: 2022-05-18: Cambio de batería.",
+        "Taller3: 2022-09-30: Reemplazo de cadena de transmisión."
+    ]
+}
