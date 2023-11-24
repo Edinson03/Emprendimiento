@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
    <!-- Reservation Start -->
    <div class="container-fluid my-5">
     <div class="container">
@@ -52,20 +53,17 @@
                         <h1 class="text-white mb-4 mt-5">Datos de Usuario</h1>
                         <form class="mb-5" method='POST' action='/registrar'>
                             <div class="form-group">
-                                <select class="custom-select bg-transparent border-primary px-4" name='plan' style="height: 49px;" required>
-                                    <option value=""> --Seleccionar Plan-- </option>
-                                    <option value="1">Plan Mensual</option>
-                                    <option value="2">Plan Semestral</option>
-                                    <option value="3">Plan Anual</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <input type="text" class="form-control bg-transparent border-primary p-4" name='name' placeholder="Name"
                                     required="required" />
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
                                     name='email' required="required" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="phone" class="form-control bg-transparent border-primary p-4" placeholder="Phone"
+                                    name='phone' required="required" />
                             </div>
         
                             <div class="form-group">
@@ -80,31 +78,45 @@
                                     <input name="password" type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Password" required/>
                                 </div>
                             </div>
-        
+
                             <div class="form-group">
-                                <div class="confirm" id="confirm" data-target-input="nearest" name='confirm'>
-                                    <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="confirmPassword" required/>
+                                <div class="confirm" id="confirm" data-target-input="nearest" >
+                                    <input name='confirm' type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="confirmPassword" required/>
                                 </div>
                             </div>
+
+                            {% if validacion%}
+                            <div class="alert alert-danger" role="alert">
+                                {{validacion}}
+                            </div>
+                            {% endif %}
    
                             <h1 class="text-white mb-4 mt-5">Datos de Tarjeta</h1>
                             
                             <div class="form-group">
+                                <select class="custom-select bg-transparent border-primary px-4" name='plan' style="height: 49px;" required>
+                                    <option value=""> --Seleccionar Plan-- </option>
+                                    <option value="1">Plan Mensual</option>
+                                    <option value="2">Plan Semestral</option>
+                                    <option value="3">Plan Anual</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="text" class="form-control bg-transparent border-primary p-4" placeholder="Nombre"
-                                    required="required" />
+                                    name='nameT' required="required" />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control bg-transparent border-primary p-4" placeholder="Numero de la Tarjeta"
-                                    required="required" />
+                                    name='number' required="required" />
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control bg-transparent border-primary p-4" placeholder="Fecha de Vencimiento  MM/AA"
-                                    required="required" />
+                                    name= 'fecha'r equired="required" />
                             </div>
 
                             <div class="form-group">
                                 <input type="text" class="form-control bg-transparent border-primary p-4" placeholder="CCV"
-                                    required="required" />
+                                    name='ccv' required="required" />
                             </div>
 
                             <div>

@@ -52,65 +52,6 @@
     </div>
     <!-- Navbar End -->
 
-    <!--Modal Register-->
-    <div id="registerModal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Registrate</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form class="mb-5" method='POST' action='/registrar'>
-                    <div class="form-group">
-                        <select class="custom-select bg-transparent border-primary px-4" name='plan' style="height: 49px;" required>
-                            <option value=""> --Seleccionar Plan-- </option>
-                            <option value="1">Plan Mensual</option>
-                            <option value="2">Plan Semestral</option>
-                            <option value="3">Plan Anual</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control bg-transparent border-primary p-4" name='name' placeholder="Name"
-                            required="required" />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
-                            name='email' required="required" />
-                    </div>
-
-                    <div class="form-group">
-                        <div class="date" id="date" data-target-input="nearest">
-                            <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" 
-                            name='date' required="required" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="password" id="password" data-target-input="nearest" name='password'>
-                            <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Password" required/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="confirm" id="confirm" data-target-input="nearest" name='confirm'>
-                            <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="confirmPassword" required/>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Guardar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
     <!-- Carousel Start -->
@@ -123,12 +64,14 @@
                     <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
                     <img class="img-fluid mb-3 mb-sm-0" src="static/img/logo.png" alt="Logo">
                     <div class="w-20">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary font-weight-bold px-3">Buscar</button>
+                        <form method="POST" action="{{url_for('buscar')}}">
+                            <div class="input-group">
+                                <input id="numeroPlacaInput" type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary font-weight-bold px-3" type="submit">Buscar</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>   
                     </div>
                 </div>
             </div>
@@ -138,12 +81,14 @@
                     <h2 class="text-primary font-weight-medium m-0">We Have Been Serving</h2>
                     <img class="img-fluid mb-3 mb-sm-0" src="static/img/logo.png" alt="Logo">
                     <div class="w-20">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary font-weight-bold px-3">Buscar</button>
+                        <form method="POST" action="{{url_for('buscar')}}">
+                            <div class="input-group">
+                                <input id="numeroPlacaInput" type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary font-weight-bold px-3" type="submit">Buscar</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>                    
                     </div>
                 </div>
             </div>
@@ -252,7 +197,7 @@
                             <li>Historiales detallados mensuales</li>
                             <li>Recordatorios personalizados</li>
                         </ul>
-                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                        <button class="btn btn-light mt-auto align-self-center" onclick="window.location.href='{{url_for('registrar')}}'">Seleccionar</button>
                     </div>
                 </div>
 
@@ -266,7 +211,7 @@
                             <li>Soporte prioritario</li>
                             <li>Informes de mantenimiento personalizados</li>
                         </ul>
-                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                        <button class="btn btn-light mt-auto align-self-center" onclick="window.location.href='{{url_for('registrar')}}'">Seleccionar</button>
                     </div>
                 </div>
 
@@ -281,7 +226,7 @@
                             <li>Servicio de asesoramiento personalizado</li>
                             <li>Actualizaciones de características anticipadas</li>
                         </ul>
-                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                        <button class="btn btn-light mt-auto align-self-center" onclick="window.location.href='{{url_for('registrar')}}'">Seleccionar</button>
                     </div>
                 </div>
             </div>
