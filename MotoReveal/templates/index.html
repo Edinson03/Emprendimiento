@@ -38,20 +38,80 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="/index" class="nav-item nav-link active">Inicio</a>
-                    <a href="service.html" class="nav-item nav-link">Servicios</a>
+                    <a href="/" class="nav-item nav-link active">Inicio</a>
+                    <a href="#servicios" class="nav-item nav-link">Servicios</a>
                     <a href="https://andresqagudelo.github.io/Moto.github.io/" class="nav-item nav-link">Contactanos</a>
                     
                 </div>
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="contact.html" class="nav-item nav-link">Iniciar</a>
-                    <a href="contact.html" class="nav-item nav-link">Registrate</a>
-                    
+                    <a class="nav-item nav-link"  href="{{ url_for('inicio') }}">Iniciar</a>
+                    <a  href="{{ url_for('registrar') }}" class="nav-item nav-link">Registrate</a>
                 </div>
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
+
+    <!--Modal Register-->
+    <div id="registerModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Registrate</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form class="mb-5" method='POST' action='/registrar'>
+                    <div class="form-group">
+                        <select class="custom-select bg-transparent border-primary px-4" name='plan' style="height: 49px;" required>
+                            <option value=""> --Seleccionar Plan-- </option>
+                            <option value="1">Plan Mensual</option>
+                            <option value="2">Plan Semestral</option>
+                            <option value="3">Plan Anual</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control bg-transparent border-primary p-4" name='name' placeholder="Name"
+                            required="required" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
+                            name='email' required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <div class="date" id="date" data-target-input="nearest">
+                            <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" 
+                            name='date' required="required" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="password" id="password" data-target-input="nearest" name='password'>
+                            <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Password" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="confirm" id="confirm" data-target-input="nearest" name='confirm'>
+                            <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="confirmPassword" required/>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5 position-relative">
@@ -98,7 +158,7 @@
 </div>
 
         <!-- Menu Start -->
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5" id="servicios">
         <div class="container">
             <div class="section-title">
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Servicios</h4>
@@ -139,7 +199,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h1 class="mb-5">Para tus clientes</h1>
+                    <h1 class="mb-5">Para tus Clientes</h1>
                     <div class="row align-items-center mb-5">
                         <div class="col-4 col-sm-3">
                             <img class="w-100 rounded-circle mb-3 mb-sm-0" src="static/img/menu-1.jpg" alt="">
@@ -176,58 +236,58 @@
     </div>
     <!-- Menu End -->
 
-<!-- Offer Start -->
-<div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
-    <div class="container py-5">
-        <h1 class="display-3 text-primary mt-3">3 meses al 50%</h1>
-        <h1 class="text-white mb-3">Sunday Special Offer</h1>
-        <h4 class="text-white font-weight-normal mb-4 pb-3">Only for Sunday from 1st Jan to 30th Jan 2045</h4>
-        <div class="row d-flex align-items-stretch">
-            <div class="col-md-4">
-                <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
-                    <h2 class="text-primary">Plan Mensual</h2>
-                    <p class="price">$10/mes</p>
-                    <ul>
-                        <li>Acceso ilimitado</li>
-                        <li>Historiales detallados mensuales</li>
-                        <li>Recordatorios personalizados</li>
-                    </ul>
-                    <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+    <!-- Offer Start -->
+    <div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
+        <div class="container py-5">
+            <h1 class="display-3 text-primary mt-3">3 meses al 50%</h1>
+            <h1 class="text-white mb-3">Sunday Special Offer</h1>
+            <h4 class="text-white font-weight-normal mb-4 pb-3">Only for Sunday from 1st Jan to 30th Jan 2045</h4>
+            <div class="row d-flex align-items-stretch">
+                <div class="col-md-4">
+                    <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
+                        <h2 class="text-primary">Plan Mensual</h2>
+                        <p class="price">$10/mes</p>
+                        <ul>
+                            <li>Acceso ilimitado</li>
+                            <li>Historiales detallados mensuales</li>
+                            <li>Recordatorios personalizados</li>
+                        </ul>
+                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
-                    <h2 class="text-primary"> Plan Semestral</h2>
-                    <p class="price">$50/semestre</p>
-                    <ul>
-                        <li>Acceso ilimitado</li>
-                        <li>Descuentos exclusivos en servicios</li>
-                        <li>Soporte prioritario</li>
-                        <li>Informes de mantenimiento personalizados</li>
-                    </ul>
-                    <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                <div class="col-md-4">
+                    <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
+                        <h2 class="text-primary"> Plan Semestral</h2>
+                        <p class="price">$50/semestre</p>
+                        <ul>
+                            <li>Acceso ilimitado</li>
+                            <li>Descuentos exclusivos en servicios</li>
+                            <li>Soporte prioritario</li>
+                            <li>Informes de mantenimiento personalizados</li>
+                        </ul>
+                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
-                    <h2 class="text-primary">Plan Por Año</h2>
-                    <p class="price">$100/año</p>
-                    <ul>
-                        <li>Acceso ilimitado</li>
-                        <li>Colaboración con talleres asociados</li>
-                        <li>Acceso a eventos exclusivos</li>
-                        <li>Servicio de asesoramiento personalizado</li>
-                        <li>Actualizaciones de características anticipadas</li>
-                    </ul>
-                    <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                <div class="col-md-4">
+                    <div class="subscription-plan rounded border p-4 mb-4 text-white flex-column h-100 d-flex flex-column">
+                        <h2 class="text-primary">Plan Por Año</h2>
+                        <p class="price">$100/año</p>
+                        <ul>
+                            <li>Acceso ilimitado</li>
+                            <li>Colaboración con talleres asociados</li>
+                            <li>Acceso a eventos exclusivos</li>
+                            <li>Servicio de asesoramiento personalizado</li>
+                            <li>Actualizaciones de características anticipadas</li>
+                        </ul>
+                        <button class="btn btn-light mt-auto align-self-center">Seleccionar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Offer End -->
+    <!-- Offer End -->
 
 
 
