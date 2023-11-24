@@ -16,7 +16,7 @@ db = client.user_login
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('dashboard.html')
 
 @app.route('/buscar', methods=['POST', 'GET'])
 def buscar():
