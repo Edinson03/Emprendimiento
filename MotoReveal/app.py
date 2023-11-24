@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import pymongo
 from werkzeug.security import generate_password_hash, check_password_hash
-import bcrypt
 from flask_bcrypt import Bcrypt
 from functools import wraps
 import string
-bcrypt = Bcrypt()
+from passlib.hash import pbkdf2_sha256
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y secreta
@@ -16,11 +16,15 @@ db = client.user_login
 
 @app.route('/')
 def index():
-    return render_template('adcuenta.html')
+    return render_template('index.html')
 
 @app.route('/buscar', methods=['POST', 'GET'])
 def buscar():
     return render_template('menu.html')
+
+@app.route('/cuenta', methods=['POST', 'GET'])
+def cuenta():
+    return render_template('adcuenta.html')
 
 @app.route('/inicio', methods=['GET', 'POST'])
 def login():
@@ -50,6 +54,13 @@ def registrar():
             'phone' : request.form.get('phone'),
             'date'  : request.form.get('date'),
             'password'  : request.form.get('password'),
+            
+            # Get data from the card details section
+            'plan': request.form.get('plan'),
+            'nameT' : request.form.get('nameT'),
+            'number' : request.form.get('number'),
+            'fecha' : request.form.get('fecha'),
+            'ccv'   : request.form.get('ccv'),
    
         }
         
@@ -62,30 +73,41 @@ def registrar():
         if validacion:
             return render_template('registro.html', validacion= validacion)
 
-        # Get data from the card details section
-        plan = request.form.get('plan')
-        nameT = request.form.get('nameT')
-        number = request.form.get('number')
-        fecha = request.form.get('fecha')
-        ccv = request.form.get('ccv')
+                # Verificar si el usuario ya existe en la base de datos
+        if db.db.usuarios.find_one({'email': date['email']}):
+            return 'Usuario ya registrado. <a href="/registro">Intentar nuevamente</a>'
 
-        # Save the data to your database or perform any necessary actions
-        # Here, we're just printing the data as an example
-        print(f"Name: {name}")
-        print(f"Email: {email}")
-        print(f"Date: {date}")
-        print(f"Plan: {plan}")
-        print(f"Name on Card: {nameT}")
-        print(f"Card Number: {number}")
-        print(f"Expiration Date: {fecha}")
-        print(f"CCV: {ccv}")
+        # Cifrar la contraseña antes de almacenarla en la base de datos
+            # Encrypt the password
+        date['password'] = pbkdf2_sha256.encrypt(date['password'])
 
         # Add your database logic or other actions here
 
-        return "Registration successful. Data has been processed."
+        print(date)
+        # Insertar el usuario en la base de datos
+        db.db.usuarios.insert_one({
+            'name'  : date['name'],
+            'email' : date['email'],
+            'phone' : date['phone'],
+            'date'  : date['date'],
+            'password'  : date['password'],
+            
+            # Get data from the card details section
+            'plan': date['plan'],
+            'nameT' : date['nameT'],
+            'number' : date['number'],
+            'fecha' : date['fecha'],
+            'ccv'   : date['ccv'],
+        })
+        
+        return redirect(url_for('menu'))
 
 
     return render_template('registro.html', validacion = None)
+
+@app.route('/menu', methods=['GET'])
+def menu():
+    return render_template('dashboard.html')
 
 @app.route('/inicio')
 def inicio():
@@ -112,15 +134,11 @@ def validateCustomer(customer, confirm):
         error_message = 'Password requires a special character'
     elif len (customer['email']) < 5:
         error_message = 'Email must be 5 char long'
-    elif customer.isExists ():
-        error_message = 'Email Address Already Registered..'
     elif customer['password'] != confirm:
         error_message  = 'The passwords do not match'
     # saving
     return error_message
-@app.route('/index')
-def hyu():
-    return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

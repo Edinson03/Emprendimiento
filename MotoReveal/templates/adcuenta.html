@@ -7,82 +7,176 @@
     <title>Administrar Cuenta</title>
 
     <!-- Enlazar archivos de estilo de Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css" media="screen">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <link href="/static/css/component.css" rel="stylesheet">
 
-    <!-- Otros enlaces de estilos según sea necesario -->
+    <link rel="stylesheet" href="/static/icons/linearicons/style.css">
+    <link rel="stylesheet" href="/static/icons/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/icons/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/static/icons/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="/static/icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="/static/icons/rivolicons/style.css">
+    <link rel="stylesheet" href="/static/icons/flaticon-line-icon-set/flaticon-line-icon-set.css">
+    <link rel="stylesheet" href="/static/icons/flaticon-streamline-outline/flaticon-streamline-outline.css">
+    <link rel="stylesheet" href="/static/icons/flaticon-thick-icons/flaticon-thick.css">
+    <link rel="stylesheet" href="/static/icons/flaticon-ventures/flaticon-ventures.css">
+
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/style.min.css" rel="stylesheet">
 
     <!-- Tu estilo personalizado -->
     <style>
-        /* Estilo personalizado según sea necesario */
+        .bg-custom {
+            background-color: rgba(51, 33, 29, .8);
+        }
+        .page-title {
+            font-family: "Arial", sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            color: #000; /* Cambia el color a tu preferencia */
+            text-shadow: 2px 2px 4px rgba(244, 129, 52, 0.949); /* Agrega sombra de texto */
+            text-align: center;
+            padding: 20px; /* Espaciado alrededor del título */
+        }
     </style>
 </head>
 
 <body>
+    <h2 class=" text-center mb-4 page-title">Administrar Cuenta</h2>
+    <div class="container mt-5 bg-custom" style="padding:40px"  >
+        <p class="text-white mb-4" >Bienvenido a la configuración.</p>
+
     <div class="container mt-5">
+
+        <!-- Acordeón para la sección "Información de la Cuenta" -->
         <div id="accordion">
 
-        <h2 class="mb-4">Administrar Cuenta</h2>
+            <!-- Sección: Información de la Cuenta -->
+            <div class="card mb-4">
+                <div class="card-header" id="headingInfoCuenta">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseInfoCuenta" aria-expanded="true" aria-controls="collapseInfoCuenta">
+                            Información de la Cuenta
+                        </button>
+                    </h5>
+                </div>
 
-        <!-- Información de la Cuenta -->
-        <div class="container mt-5">
-            <h2 class="mb-4">Administrar Cuenta</h2>
-    
-            <!-- Acordeón para la sección "Información de la Cuenta" -->
+                <div id="collapseInfoCuenta" class="collapse show" aria-labelledby="headingInfoCuenta" data-parent="#accordion">
+                    <div class="card-body">
+                        <!-- Formulario para editar información de perfil -->
+                        <form>
+                            <!-- Nombre -->
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" value="John Doe">
+                            </div>
+
+                            <!-- Correo Electrónico -->
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico:</label>
+                                <input type="email" class="form-control" id="email" value="john@example.com">
+                            </div>
+
+                            <!-- Teléfono -->
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" class="form-control" id="telefono" value="+1 123-456-7890">
+                            </div>
+
+                            <!-- Fecha de Nacimiento -->
+                            <div class="form-group">
+                                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                <input type="date" class="form-control" id="fechaNacimiento" value="1990-01-01">
+                            </div>
+
+                            <!-- Género -->
+                            <div class="form-group">
+                                <label for="genero">Género:</label>
+                                <select class="form-control" id="genero">
+                                    <option value="masculino" selected>Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Botón para guardar cambios -->
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </form>
+                        <!-- Cambiar contraseña -->
+                        <button class="btn btn-link">Cambiar Contraseña</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Puedes agregar más secciones siguiendo el mismo patrón -->
+
+        </div>
+    </div>
+        <!-- Gestión de Pagos y Facturación -->
+        <div class="container mt-5">    
+            <!-- Acordeón para la sección "Gestión de Pagos y Facturación" -->
             <div id="accordion">
     
-                <!-- Sección: Información de la Cuenta -->
+                <!-- Sección: Gestión de Pagos y Facturación -->
                 <div class="card mb-4">
-                    <div class="card-header" id="headingInfoCuenta">
+                    <div class="card-header" id="headingGestionPagos">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseInfoCuenta" aria-expanded="true" aria-controls="collapseInfoCuenta">
-                                Información de la Cuenta
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseGestionPagos" aria-expanded="false" aria-controls="collapseGestionPagos">
+                                Gestión de Pagos y Facturación
                             </button>
                         </h5>
                     </div>
     
-                    <div id="collapseInfoCuenta" class="collapse show" aria-labelledby="headingInfoCuenta" data-parent="#accordion">
+                    <div id="collapseGestionPagos" class="collapse" aria-labelledby="headingGestionPagos" data-parent="#accordion">
                         <div class="card-body">
-                            <!-- Formulario para editar información de perfil -->
+                            <!-- Formulario para gestionar pagos y facturación -->
                             <form>
-                                <!-- Nombre -->
+                                <!-- Método de Pago -->
                                 <div class="form-group">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" value="John Doe">
-                                </div>
-    
-                                <!-- Correo Electrónico -->
-                                <div class="form-group">
-                                    <label for="email">Correo Electrónico:</label>
-                                    <input type="email" class="form-control" id="email" value="john@example.com">
-                                </div>
-    
-                                <!-- Teléfono -->
-                                <div class="form-group">
-                                    <label for="telefono">Teléfono:</label>
-                                    <input type="tel" class="form-control" id="telefono" value="+1 123-456-7890">
-                                </div>
-    
-                                <!-- Fecha de Nacimiento -->
-                                <div class="form-group">
-                                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                                    <input type="date" class="form-control" id="fechaNacimiento" value="1990-01-01">
-                                </div>
-    
-                                <!-- Género -->
-                                <div class="form-group">
-                                    <label for="genero">Género:</label>
-                                    <select class="form-control" id="genero">
-                                        <option value="masculino" selected>Masculino</option>
-                                        <option value="femenino">Femenino</option>
-                                        <option value="otro">Otro</option>
+                                    <label for="metodoPago">Método de Pago:</label>
+                                    <select class="form-control" id="metodoPago">
+                                        <option value="tarjetaCredito" selected>Tarjeta de Crédito</option>
+                                        <option value="paypal">PayPal</option>
+                                        <option value="transferencia">Transferencia Bancaria</option>
                                     </select>
+                                </div>
+    
+                                <!-- Número de Tarjeta (si aplica) -->
+                                <div class="form-group">
+                                    <label for="numeroTarjeta">Número de Tarjeta:</label>
+                                    <input type="text" class="form-control" id="numeroTarjeta" placeholder="**** **** **** 1234">
+                                </div>
+    
+                                <!-- Fecha de Vencimiento (si aplica) -->
+                                <div class="form-group">
+                                    <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+                                    <input type="text" class="form-control" id="fechaVencimiento" placeholder="MM/AA">
+                                </div>
+    
+                                <!-- Dirección de Facturación -->
+                                <div class="form-group">
+                                    <label for="direccionFacturacion">Dirección de Facturación:</label>
+                                    <textarea class="form-control" id="direccionFacturacion" rows="3"></textarea>
                                 </div>
     
                                 <!-- Botón para guardar cambios -->
                                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                             </form>
-                            <!-- Cambiar contraseña -->
-                            <button class="btn btn-link">Cambiar Contraseña</button>
                         </div>
                     </div>
                 </div>
@@ -92,119 +186,116 @@
             </div>
         </div>
 
-        <!-- Gestión de Pagos y Facturación -->
-        <div class="container mt-5">    
-            <!-- Gestión de Pagos y Facturación -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Gestión de Pagos y Facturación</h4>
-                    <!-- Formulario para gestionar pagos y facturación -->
-                    <form>
-                        <!-- Método de Pago -->
-                        <div class="form-group">
-                            <label for="metodoPago">Método de Pago:</label>
-                            <select class="form-control" id="metodoPago">
-                                <option value="tarjetaCredito" selected>Tarjeta de Crédito</option>
-                                <option value="paypal">PayPal</option>
-                                <option value="transferencia">Transferencia Bancaria</option>
-                            </select>
-                        </div>
-    
-                        <!-- Número de Tarjeta (si aplica) -->
-                        <div class="form-group">
-                            <label for="numeroTarjeta">Número de Tarjeta:</label>
-                            <input type="text" class="form-control" id="numeroTarjeta" placeholder="**** **** **** 1234">
-                        </div>
-    
-                        <!-- Fecha de Vencimiento (si aplica) -->
-                        <div class="form-group">
-                            <label for="fechaVencimiento">Fecha de Vencimiento:</label>
-                            <input type="text" class="form-control" id="fechaVencimiento" placeholder="MM/AA">
-                        </div>
-    
-                        <!-- Dirección de Facturación -->
-                        <div class="form-group">
-                            <label for="direccionFacturacion">Dirección de Facturación:</label>
-                            <textarea class="form-control" id="direccionFacturacion" rows="3"></textarea>
-                        </div>
-    
-                        <!-- Botón para guardar cambios -->
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Preferencias de Notificación -->
-        <div class="container mt-5">    
-            <!-- Preferencias de Notificación -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Preferencias de Notificación</h4>
-                    <!-- Formulario para preferencias de notificación -->
-                    <form>
-                        <!-- Notificaciones por Correo Electrónico -->
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="emailNotifications" checked>
-                            <label class="form-check-label" for="emailNotifications">Recibir notificaciones por correo electrónico</label>
-                        </div>
-    
-                        <!-- Notificaciones por Mensajes de Texto -->
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="smsNotifications">
-                            <label class="form-check-label" for="smsNotifications">Recibir notificaciones por mensajes de texto</label>
-                        </div>
-    
-                        <!-- Preferencias de Frecuencia -->
-                        <div class="form-group">
-                            <label for="notificationFrequency">Frecuencia de Notificaciones:</label>
-                            <select class="form-control" id="notificationFrequency">
-                                <option value="diario">Diario</option>
-                                <option value="semanal">Semanal</option>
-                                <option value="mensual">Mensual</option>
-                            </select>
-                        </div>
-    
-                        <!-- Botón para guardar cambios -->
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
-        <!-- Suscripciones y Membresías -->
-        <div class="container mt-5">    
-            <!-- Suscripciones y Membresías -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Suscripciones y Membresías</h4>
-                    <!-- Formulario para suscripciones y membresías -->
-                    <form>
-                        <!-- Suscripciones Activas -->
-                        <div class="form-group">
-                            <label for="activeSubscriptions">Suscripciones Activas:</label>
-                            <select class="form-control" id="activeSubscriptions" multiple>
-                                <option value="subscription1">Suscripción Premium</option>
-                                <option value="subscription2" selected>Suscripción Básica</option>
-                                <!-- Agrega más opciones según sea necesario -->
-                            </select>
-                        </div>
+        <!-- Preferencias de Notificación -->
+        <div class="container mt-5"> 
+            <!-- Acordeón para la sección "Preferencias de Notificación" -->
+            <div id="accordion">
     
-                        <!-- Membresías -->
-                        <div class="form-group">
-                            <label for="memberships">Membresías:</label>
-                            <select class="form-control" id="memberships" multiple>
-                                <option value="membership1">Membresía Oro</option>
-                                <option value="membership2" selected>Membresía Plata</option>
-                                <!-- Agrega más opciones según sea necesario -->
-                            </select>
-                        </div>
+                <!-- Sección: Preferencias de Notificación -->
+                <div class="card mb-4">
+                    <div class="card-header" id="headingNotificaciones">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNotificaciones" aria-expanded="false" aria-controls="collapseNotificaciones">
+                                Preferencias de Notificación
+                            </button>
+                        </h5>
+                    </div>
     
-                        <!-- Botón para guardar cambios -->
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
+                    <div id="collapseNotificaciones" class="collapse" aria-labelledby="headingNotificaciones" data-parent="#accordion">
+                        <div class="card-body">
+                            <!-- Formulario para preferencias de notificación -->
+                            <form>
+                                <!-- Notificaciones por Correo Electrónico -->
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailNotifications" checked>
+                                    <label class="form-check-label" for="emailNotifications">Recibir notificaciones por correo electrónico</label>
+                                </div>
+    
+                                <!-- Notificaciones por Mensajes de Texto -->
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="smsNotifications">
+                                    <label class="form-check-label" for="smsNotifications">Recibir notificaciones por mensajes de texto</label>
+                                </div>
+    
+                                <!-- Preferencias de Frecuencia -->
+                                <div class="form-group">
+                                    <label for="notificationFrequency">Frecuencia de Notificaciones:</label>
+                                    <select class="form-control" id="notificationFrequency">
+                                        <option value="diario">Diario</option>
+                                        <option value="semanal">Semanal</option>
+                                        <option value="mensual">Mensual</option>
+                                    </select>
+                                </div>
+    
+                                <!-- Botón para guardar cambios -->
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+    
+                <!-- Puedes agregar más secciones siguiendo el mismo patrón -->
+    
             </div>
         </div>
+    
+                <!-- Sección: Preferencias de Notificación -->
+        <!-- Acordeón para la sección "Suscripciones y Membresías" -->
+        <div id="accordion">
+
+            <!-- Sección: Suscripciones y Membresías -->
+            <div class="container mt-5">        
+                <!-- Acordeón para la sección "Suscripciones y Membresías" -->
+                <div id="accordion">
+        
+                    <!-- Sección: Suscripciones y Membresías -->
+                    <div class="card mb-4">
+                        <div class="card-header" id="headingSuscripciones">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSuscripciones"
+                                    aria-expanded="false" aria-controls="collapseSuscripciones">
+                                    Suscripciones y Membresías
+                                </button>
+                            </h5>
+                        </div>
+        
+                        <div id="collapseSuscripciones" class="collapse" aria-labelledby="headingSuscripciones"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                <!-- Formulario para suscripciones y membresías -->
+                                <form>
+                                    <!-- Suscripciones Activas -->
+                                    <div class="form-group">
+                                        <label for="activeSubscriptions">Suscripciones Activas:</label>
+                                        <select class="form-control" id="activeSubscriptions" multiple>
+                                            <option value="subscription1">Suscripción Premium</option>
+                                            <option value="subscription2" selected>Suscripción Básica</option>
+                                            <!-- Agrega más opciones según sea necesario -->
+                                        </select>
+                                    </div>
+        
+                                    <!-- Membresías -->
+                                    <div class="form-group">
+                                        <label for="memberships">Membresías:</label>
+                                        <select class="form-control" id="memberships" multiple>
+                                            <option value="membership1">Membresía Oro</option>
+                                            <option value="membership2" selected>Membresía Plata</option>
+                                            <!-- Agrega más opciones según sea necesario -->
+                                        </select>
+                                    </div>
+        
+                                    <!-- Botón para guardar cambios -->
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Puedes agregar más secciones siguiendo el mismo patrón -->
+        
+                </div>
+            </div>
         <!-- Cierre de Sesión y Eliminación de Cuenta -->
         <div class="container mt-5">    
             <!-- Cierre de Sesión y Eliminación de la Cuenta -->
@@ -278,43 +369,102 @@
         </div>
         <!-- Personalización del Perfil -->
         <div class="container mt-5">
-                <!-- Personalización del Perfil -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Personalización del Perfil</h4>
-                    <!-- Formulario para personalización del perfil -->
-                    <form>
-                        <!-- Nombre -->
-                        <div class="form-group">
-                            <label for="fullName">Nombre Completo:</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Nombre Completo">
-                        </div>
+             <!-- Acordeón para la sección "Personalización del Perfil" -->
+            <div id="accordion">
     
-                        <!-- Imagen de Perfil -->
-                        <div class="form-group">
-                            <label for="profileImage">Imagen de Perfil:</label>
-                            <input type="file" class="form-control-file" id="profileImage">
-                        </div>
+                <!-- Sección: Personalización del Perfil -->
+                <div class="card mb-4">
+                    <div class="card-header" id="headingPerfil">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapsePerfil" aria-expanded="false" aria-controls="collapsePerfil">
+                                Personalización del Perfil
+                            </button>
+                        </h5>
+                    </div>
     
-                        <!-- Color de Fondo -->
-                        <div class="form-group">
-                            <label for="backgroundColor">Color de Fondo:</label>
-                            <input type="color" class="form-control" id="backgroundColor">
-                        </div>
+                    <div id="collapsePerfil" class="collapse" aria-labelledby="headingPerfil" data-parent="#accordion">
+                        <div class="card-body">
+                            <!-- Formulario para personalización del perfil -->
+                            <form>
+                                <!-- Nombre -->
+                                <div class="form-group">
+                                    <label for="fullName">Nombre Completo:</label>
+                                    <input type="text" class="form-control" id="fullName" placeholder="Nombre Completo">
+                                </div>
     
-                        <!-- Guardar Cambios -->
-                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
+                                <!-- Imagen de Perfil -->
+                                <div class="form-group">
+                                    <label for="profileImage">Imagen de Perfil:</label>
+                                    <input type="file" class="form-control-file" id="profileImage">
+                                </div>
+    
+                                <!-- Color de Fondo -->
+                                <div class="form-group">
+                                    <label for="backgroundColor">Color de Fondo:</label>
+                                    <input type="color" class="form-control" id="backgroundColor">
+                                </div>
+    
+                                <!-- Guardar Cambios -->
+                                <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Encuentranos</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Pereira, Risaralda</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+57 321 456 7890</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>luz@utp.edu.co</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Conocenos</h4>
+                <p>Síguenos en nuestras redes sociales</p>
+                <div class=" justify-content-around">
+                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Porque elegirnos</h4>
+                <img src="static/img/logo.png" alt="Imagen Representativa" class="img-fluid mb-4" style="max-height: 40px;">
+                <p class="text-white mb-4" style="letter-spacing: 3px;">Transformamos tu experiencia para que cada momento sea una aventura inolvidable. Descubre la excelencia en servicio que nos distingue.</p>
+                <div class="w-100">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Domain</a>. All Rights Reserved.</a></p>
+            <p class="m-0 text-white">Designed by <a class="font-weight-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+        </div>
     </div>
+    
 
     <!-- Enlaces a scripts y archivos de JavaScript según sea necesario -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>ç
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
 
     <script>
         // Script para cerrar las secciones del acordeón al abrir otra
@@ -324,6 +474,9 @@
             });
         });
     </script>
+
+
 </body>
+
 
 </html>
