@@ -91,6 +91,7 @@ def registrar():
 def inicio():
     return render_template('inicio.html')
 
+<<<<<<< HEAD
 def validateCustomer(customer, confirm):
     print(customer)
     error_message = None
@@ -118,6 +119,14 @@ def validateCustomer(customer, confirm):
         error_message  = 'The passwords do not match'
     # saving
     return error_message
+=======
+@app.route('/index')
+def hyu():
+    return render_template('index.html')
+
+
+
+>>>>>>> 54c9742 (dash finsif)
 
 if __name__ == '__main__':
     app.run(debug=True)

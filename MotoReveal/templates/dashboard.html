@@ -98,9 +98,34 @@
 </head>
 
 <body>
+
+    <nav class="navigation navbar navbar-expand-lg navbar-dark" style="background: rgba(51, 33, 29, .8);">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav ml-auto w-100 justify-content-around">
+                <li class="navbar-brand">
+                    <img src="static/img/logo.png" alt="LOgo" class="img-fluid" style="max-height: 40px">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://andresqagudelo.github.io/Moto.github.io/">Conocenos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Administrar Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('hyu') }}">Cerrar sesion</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    
+  
     <!-- Header -->
-    <header class="container-fluid text-center py-3">
-        <h1 class="page-title">Taller de Motos</h1>
+    <header class="container-fluid text-center ">
+        <h1 class="page-title">Gestión de Mantenimiento de Motos</h1>
     </header>
 
     <div class="container-fluid my-5">
@@ -120,48 +145,101 @@
                     <form id="form-agregar-mantenimiento" class="active">
                         <h2>Agregar Mantenimiento:</h2>
                         <div class="mb-3">
+                            <label for="placa" class="form-label">Placa:</label>
+                            <input type="text" class="form-control" name="placa" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modelo" class="form-label">Modelo:</label>
+                            <input type="text" class="form-control" name="modelo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca:</label>
+                            <input type="text" class="form-control" name="marca" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="fecha" class="form-label">Fecha:</label>
-                            <input type="text" class="form-control" name="fecha" required>
+                            <input type="date" class="form-control" name="fecha" required>
                         </div>
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción:</label>
                             <input type="text" class="form-control" name="descripcion" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="tipoMantenimiento" class="form-label">Tipo de Mantenimiento:</label>
+                            <select class="form-select" name="tipoMantenimiento" required>
+                                <option value="cambioAceite">Cambio de Aceite</option>
+                                <option value="revisionFrenos">Revisión de Frenos</option>
+                                <!-- Agrega más opciones según necesites -->
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Agregar Mantenimiento</button>
                     </form>
+                    
 
                     <!-- Formulario Modificar Mantenimiento -->
                     <form id="form-modificar-mantenimiento">
                         <h2>Modificar Mantenimiento:</h2>
                         <div class="mb-3">
-                            <label for="fecha" class="form-label">Fecha:</label>
-                            <input type="text" class="form-control" name="fecha" required>
+                            <label for="idMantenimiento" class="form-label">Identificador del Mantenimiento:</label>
+                            <input type="text" class="form-control" name="idMantenimiento" required>
                         </div>
-                        <!-- Agregar más campos según necesites -->
+                        <div class="mb-3">
+                            <label for="placa" class="form-label">Nueva Placa:</label>
+                            <input type="text" class="form-control" name="placa" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modelo" class="form-label">Nuevo Modelo:</label>
+                            <input type="text" class="form-control" name="modelo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Nueva Marca:</label>
+                            <input type="text" class="form-control" name="marca" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Nueva Fecha:</label>
+                            <input type="date" class="form-control" name="fecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Nueva Descripción:</label>
+                            <input type="text" class="form-control" name="descripcion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoMantenimiento" class="form-label">Nuevo Tipo de Mantenimiento:</label>
+                            <select class="form-select" name="tipoMantenimiento" required>
+                                <option value="cambioAceite">Cambio de Aceite</option>
+                                <option value="revisionFrenos">Revisión de Frenos</option>
+                                <!-- Agrega más opciones según necesites -->
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Modificar Mantenimiento</button>
                     </form>
+                    
 
                     <!-- Formulario Buscar Mantenimiento -->
                     <form id="form-buscar-mantenimiento">
                         <h2>Buscar Mantenimiento:</h2>
                         <div class="mb-3">
-                            <label for="fecha" class="form-label">Fecha:</label>
-                            <input type="text" class="form-control" name="fecha" required>
+                            <label for="placa" class="form-label">Placa del Vehículo:</label>
+                            <input type="text" class="form-control" name="placa" required>
                         </div>
-                        <!-- Agregar más campos según necesites -->
                         <button type="submit" class="btn btn-primary">Buscar Mantenimiento</button>
                     </form>
-
-                    <!-- Formulario Eliminar Mantenimiento -->
+                    
+                   <!-- Formulario Eliminar Mantenimiento -->
                     <form id="form-eliminar-mantenimiento">
                         <h2>Eliminar Mantenimiento:</h2>
                         <div class="mb-3">
-                            <label for="fecha" class="form-label">Fecha:</label>
-                            <input type="text" class="form-control" name="fecha" required>
+                            <label for="placa" class="form-label">Placa del Vehículo:</label>
+                            <input type="text" class="form-control" name="placa" required>
                         </div>
-                        <!-- Agregar más campos según necesites -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="confirmarEliminacion" required>
+                            <label class="form-check-label" for="confirmarEliminacion">Confirmar Eliminación</label>
+                        </div>
                         <button type="submit" class="btn btn-danger">Eliminar Mantenimiento</button>
                     </form>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -184,28 +262,19 @@
     <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p class="m-0"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Encuentranos</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Pereira, Risaralda</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+57 321 456 7890</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>luz@utp.edu.co</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
-                <p>Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum</p>
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Conocenos</h4>
+                <p>Siguenos en nuestras redes sociales</p>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
-                <div>
-                    <h6 class="text-white text-uppercase">Monday - Friday</h6>
-                    <p>8.00 AM - 8.00 PM</p>
-                    <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
-                    <p>2.00 PM - 8.00 PM</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
