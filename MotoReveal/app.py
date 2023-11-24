@@ -15,7 +15,7 @@ db = client.user_login
 
 @app.route('/', )
 def index():
-    return render_template('index.html')
+    return render_template('dashboard.html')
 
 @app.route('/inicio', methods=['GET', 'POST'])
 def login():
