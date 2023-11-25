@@ -7,13 +7,14 @@ import string
 from bson import ObjectId
 from passlib.hash import pbkdf2_sha256
 from creditcard import CreditCard
-
+user_activo = ""
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y secreta
 
 #Database
-client = pymongo.MongoClient('mongodb+srv://revealmoto:3gdYFc0bKngQOK11@cluster0.g8e9qsh.mongodb.net/')
+#client = pymongo.MongoClient('mongodb+srv://revealmoto:3gdYFc0bKngQOK11@cluster0.g8e9qsh.mongodb.net/')
+client = pymongo.MongoClient('mongodb://localhost:27017/users')
 db = client.user_login
 
 # Decorators
@@ -139,11 +140,37 @@ def buscar():
 
 
 @app.route('/cuenta', methods=['POST', 'GET'])
-def cuenta(): 
-    return render_template('adcuenta.html')
+def cuenta():
+    
+    data = db.db.usuarios.find_one({'email' : user_activo})
+        
+    print(user_activo, data)
+    return render_template('adcuenta.html', data = data)
+
+@app.route('/modificarcuenta', methods=['POST', 'GET'])
+def modificarcuenta():
+    if request.method == 'POST':
+            db.db.usuarios.update_one({ 
+                'email' :  request.form.get('email')
+            },{'$set' : {
+                'email'  : request.form.get('email'),
+                'name' : request.form.get('name'),
+                'phone' : request.form.get('phone'),
+                'date'  : request.form.get('date'),
+                
+               }
+                
+            }
+            )
+            global user_activo
+            user_activo = request.form.get('email')
+    
+    return redirect('cuenta')
 
 @app.route('/cerrar')
 def cerrar():
+    global user_activo
+    user_activo = ""
     session['logged_in'] = None
     session.clear()
     return redirect('/')
@@ -220,8 +247,8 @@ def menu():
 @app.route('/inicio', methods=['POST', 'GET'])
 def inicio():
     if request.method == 'POST':
-        correo = request.form['email']
-        contraseña = request.form['password']
+        correo = request.form.get('email')
+        
 
         
         user = db.db.usuarios.find_one({
@@ -229,6 +256,8 @@ def inicio():
         })
     
         if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            global user_activo 
+            user_activo= correo
             session['logged_in'] = True
             return redirect(url_for('menu'))
         else:
