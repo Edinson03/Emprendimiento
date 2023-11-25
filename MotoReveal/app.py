@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bcrypt import Bcrypt
 from functools import wraps
 import string
+from bson import ObjectId
 from passlib.hash import pbkdf2_sha256
 
 
@@ -31,7 +32,7 @@ def agregar():
 
         # Insertar el usuario en la base de datos
         db.db.motos.insert_one({
-            'placa'  : date['placa'],
+            'placa'  : date['placa'].upper,
             'modelo' : date['modelo'],
             'marca' : date['marca'],
             'fecha'  : date['fecha'],
@@ -44,13 +45,80 @@ def agregar():
 
     return render_template('index.html', validacion = None)
 
+
+@app.route('/modificar', methods=['POST'])
+def modificar():
+    
+    if request.method == 'POST':
+        date = {
+            '_id' : request.form.get('_id'),
+            'placa'  : request.form.get('placa'),
+            'modelo' : request.form.get('modelo'),
+            'marca' : request.form.get('marca'),
+            'fecha'  : request.form.get('fecha'),
+            'descripcion'  : request.form.get('descripcion'),
+   
+        }
+        
+        if date['_id'] != "" and date['placa'] != "" and date['modelo'] != "" and date['marca'] != "" and date['fecha'] != "" and date['descripcion'] != "":
+            db.db.motos.update_one({ 
+                '_id' : ObjectId (request.form.get('_id'))
+            },{'$set' : {
+                'placa'  : request.form.get('placa'),
+                'modelo' : request.form.get('modelo'),
+                'marca' : request.form.get('marca'),
+                'fecha'  : request.form.get('fecha'),
+                'descripcion'  : request.form.get('descripcion'),
+               }
+                
+            }
+            )
+            return render_template('dashboard.html', error = "Datos Actualizados")
+           
+        return render_template('dashboard.html', error = "Llene todos los campos")
+    return render_template('dashboard.html')
+
+@app.route('/historial', methods=['POST'])
+def historial():
+    if request.method == 'POST':
+        
+        data = db.db.motos.find({
+            'placa': request.form.get('placa')
+        })
+        data = list(data)
+        print(request.form.get('placa'))
+        print(data)
+        return render_template('dashboard.html', placa =request.form.get('placa'), data=data)
+    return render_template('dashboard.html')
+
+@app.route('/eliminar', methods=['POST'])
+def eliminar():
+    
+    if request.method == 'POST':
+        
+        db.db.motos.delete_one({
+            '_id': ObjectId(request.form.get('_id'))
+        })
+
+        return render_template('dashboard.html', error= "Eliminacion Completa")
+    return render_template('dashboard.html')
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/buscar', methods=['POST', 'GET'])
 def buscar():
+    if request.method == 'POST':
+        data = db.db.motos.find({
+            'placa': request.form.get('placa')
+        })
+        data = list(data)
+        print(request.form.get('placa'))
+        print(data)
+        return render_template('menu.html', placa =request.form.get('placa'), data=data)
     return render_template('menu.html')
+
 
 @app.route('/cuenta', methods=['POST', 'GET'])
 def cuenta():

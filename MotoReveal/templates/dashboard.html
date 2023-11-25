@@ -142,7 +142,7 @@
                 <!-- Parte derecha - Área de formulario -->
                 <div class="col-lg-6 form-section">
                     <!-- Formulario Agregar Mantenimiento -->
-                    <form class="active" method='POST' action='{{url_for('agregar')}}'>
+                    <form id="form-agregar-mantenimiento" class="active" method='POST' action='{{url_for('agregar')}}'>
                         <h2>Agregar Mantenimiento:</h2>
                         <div class="mb-3">
                             <label for="placa" class="form-label">Placa:</label>
@@ -177,11 +177,11 @@
                     
 
                     <!-- Formulario Modificar Mantenimiento -->
-                    <form id="form-modificar-mantenimiento">
+                    <form id="form-modificar-mantenimiento" method='POST'action="/modificar"> 
                         <h2>Modificar Mantenimiento:</h2>
                         <div class="mb-3">
-                            <label for="idMantenimiento" class="form-label">Identificador del Mantenimiento:</label>
-                            <input type="text" class="form-control" name="idMantenimiento" required>
+                            <label for="_id" class="form-label">Identificador:</label>
+                            <input type="text" class="form-control" name="_id" required>
                         </div>
                         <div class="mb-3">
                             <label for="placa" class="form-label">Nueva Placa:</label>
@@ -211,12 +211,13 @@
                                 <!-- Agrega más opciones según necesites -->
                             </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Modificar Mantenimiento</button>
                     </form>
                     
 
                     <!-- Formulario Buscar Mantenimiento -->
-                    <form id="form-buscar-mantenimiento">
+                    <form id="form-buscar-mantenimiento" method='POST' action='{{url_for('historial')}}'>
                         <h2>Buscar Mantenimiento:</h2>
                         <div class="mb-3">
                             <label for="placa" class="form-label">Placa del Vehículo:</label>
@@ -226,11 +227,11 @@
                     </form>
                     
                    <!-- Formulario Eliminar Mantenimiento -->
-                    <form id="form-eliminar-mantenimiento">
+                    <form id="form-eliminar-mantenimiento" method='POST' action='/eliminar'>
                         <h2>Eliminar Mantenimiento:</h2>
                         <div class="mb-3">
-                            <label for="placa" class="form-label">Placa del Vehículo:</label>
-                            <input type="text" class="form-control" name="placa" required>
+                            <label for="placa" class="form-label">Identificador:</label>
+                            <input type="text" class="form-control" name="_id" required>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="confirmarEliminacion" required>
@@ -239,10 +240,62 @@
                         <button type="submit" class="btn btn-danger">Eliminar Mantenimiento</button>
                     </form>
                     
-                    
                 </div>
             </div>
         </div>
+
+                        {%if error%}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                        {%endif%}
+
+            <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Historial</h4>
+                <h1 class="display-4">{{placa}}</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Fecha</th>
+                                <th>Identificador</th>
+                                <th>Descripción</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if data %}
+                            {% for registro in data %}
+                            <tr>
+                                <td>{{registro.modelo}}</td>
+                                <td>{{registro.marca}}</td>
+                                <td>{{registro.fecha}}</td>
+                                <td>{{registro._id}}</td>
+                                <td>{{registro.descripcion}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">No hay datos disponibles para la placa proporcionada.</td>
+                            </tr>
+                        {% endif %}
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
     </div>
 
     <script>

@@ -53,7 +53,7 @@
             <div class="w-20">
                 <form method="POST" action="{{url_for('buscar')}}">
                     <div class="input-group">
-                        <input id="numeroPlacaInput" type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
+                        <input name='placa' type="text" class="form-control border-light" style="padding: 25px;" placeholder="Numero de Placa">
                         <div class="input-group-append">
                             <button class="btn btn-primary font-weight-bold px-3" type="submit">Buscar</button>
                         </div>
@@ -71,7 +71,7 @@
         <div class="container">
             <div class="section-title">
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Historial</h4>
-                <h1 class="display-4">Placa</h1>
+                <h1 class="display-4">{{placa}}</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -86,14 +86,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for registro in historial %}
+                            {% if data %}
+                            {% for registro in data %}
                             <tr>
-                                <td>{{ registro.split(': ')[0] }}</td>
-                                <td>{{ registro.split(': ')[1] }}</td>
-                                <td>{{ registro.split(': ')[2] }}</td>
-                                
+                                <td>{{registro.modelo}}</td>
+                                <td>{{registro.marca}}</td>
+                                <td>{{registro.fecha}}</td>
+                                <td>{{registro._id}}</td>
+                                <td>{{registro.descripcion}}</td>
+
                             </tr>
                             {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">No hay datos disponibles para la placa proporcionada.</td>
+                            </tr>
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>
