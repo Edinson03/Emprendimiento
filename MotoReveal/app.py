@@ -6,11 +6,9 @@ from functools import wraps
 import string
 from bson import ObjectId
 from passlib.hash import pbkdf2_sha256
-<<<<<<< HEAD
-from creditcard import CreditCard
+
 user_activo = ""
-=======
->>>>>>> 494588d (footer actualizdo)
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y secreta
