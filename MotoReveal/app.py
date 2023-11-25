@@ -6,6 +6,7 @@ from functools import wraps
 import string
 from bson import ObjectId
 from passlib.hash import pbkdf2_sha256
+from creditcard import CreditCard
 
 
 app = Flask(__name__)
@@ -21,7 +22,7 @@ def agregar():
     if request.method == 'POST':
         
         date = {
-            'placa'  : request.form.get('placa'),
+            'placa'  : request.form.get('placa').upper(),
             'modelo' : request.form.get('modelo'),
             'marca' : request.form.get('marca'),
             'fecha'  : request.form.get('fecha'),
@@ -32,7 +33,7 @@ def agregar():
 
         # Insertar el usuario en la base de datos
         db.db.motos.insert_one({
-            'placa'  : date['placa'].upper,
+            'placa'  : date['placa'],
             'modelo' : date['modelo'],
             'marca' : date['marca'],
             'fecha'  : date['fecha'],
@@ -83,12 +84,12 @@ def historial():
     if request.method == 'POST':
         
         data = db.db.motos.find({
-            'placa': request.form.get('placa')
+            'placa': request.form.get('placa').upper()
         })
         data = list(data)
         print(request.form.get('placa'))
         print(data)
-        return render_template('dashboard.html', placa =request.form.get('placa'), data=data)
+        return render_template('dashboard.html', placa =request.form.get('placa').upper(), data=data)
     return render_template('dashboard.html')
 
 @app.route('/eliminar', methods=['POST'])
@@ -111,12 +112,12 @@ def index():
 def buscar():
     if request.method == 'POST':
         data = db.db.motos.find({
-            'placa': request.form.get('placa')
+            'placa': request.form.get('placa').upper()
         })
         data = list(data)
         print(request.form.get('placa'))
         print(data)
-        return render_template('menu.html', placa =request.form.get('placa'), data=data)
+        return render_template('menu.html', placa =request.form.get('placa').upper(), data=data)
     return render_template('menu.html')
 
 
@@ -154,13 +155,12 @@ def registrar():
         print(date)
         # Password verification
         validacion = validateCustomer(date, confirm) 
-        print(validacion)
         if validacion:
             return render_template('registro.html', validacion= validacion)
 
-                # Verificar si el usuario ya existe en la base de datos
+        # Verificar si el usuario ya existe en la base de datos
         if db.db.usuarios.find_one({'email': date['email']}):
-            return 'Usuario ya registrado. <a href="/registro">Intentar nuevamente</a>'
+            return render_template('registro.html', validacion= "Usuario ya registrado")
 
         # Cifrar la contraseña antes de almacenarla en la base de datos
             # Encrypt the password
@@ -168,8 +168,11 @@ def registrar():
 
         # Add your database logic or other actions here
 
-        print(date)
         # Insertar el usuario en la base de datos
+        validacion = validateTar(date)
+        if validacion:
+            return render_template('registro.html', validacion= validacion)
+
         db.db.usuarios.insert_one({
             'name'  : date['name'],
             'email' : date['email'],
@@ -239,6 +242,24 @@ def validateCustomer(customer, confirm):
         error_message = 'Email must be 5 char long'
     elif customer['password'] != confirm:
         error_message  = 'The passwords do not match'
+    # saving
+    return error_message
+
+def validateTar(customer):
+    print(customer)
+    error_message = None
+    
+    # Validar Usuario
+    if not customer['nameT']:
+        error_message = "Please Enter your Name !!"
+    elif not customer['number']:
+        error_message = 'Enter your Tarjet Number'
+    elif len (customer['number']) < 16:
+        error_message = 'Tarjet Number must be 16 char Long'
+    elif not customer['fecha']:
+        error_message  = 'No valida'
+    elif len (customer['ccv']) < 3:
+        error_message = 'CCV no valido'
     # saving
     return error_message
 
