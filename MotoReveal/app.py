@@ -13,11 +13,23 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y secreta
 
 #Database
-client = pymongo.MongoClient('mongodb://localhost:27017/users')
+client = pymongo.MongoClient('mongodb+srv://revealmoto:3gdYFc0bKngQOK11@cluster0.g8e9qsh.mongodb.net/')
 db = client.user_login
+
+# Decorators
+def login_require(f):
+  @wraps(f)
+  def wrap(*args, **kwargs):
+    if 'logged_in' in session:
+      return f(*args, **kwargs)
+    else:
+      return redirect('/')
+  
+  return wrap
 
 
 @app.route('/agregar',methods=['POST'])
+@login_require
 def agregar():
     if request.method == 'POST':
         
@@ -29,7 +41,6 @@ def agregar():
             'descripcion'  : request.form.get('descripcion'),
    
         }
-        
 
         # Insertar el usuario en la base de datos
         db.db.motos.insert_one({
@@ -48,6 +59,7 @@ def agregar():
 
 
 @app.route('/modificar', methods=['POST'])
+@login_require
 def modificar():
     
     if request.method == 'POST':
@@ -80,6 +92,7 @@ def modificar():
     return render_template('dashboard.html')
 
 @app.route('/historial', methods=['POST'])
+@login_require
 def historial():
     if request.method == 'POST':
         
@@ -93,6 +106,7 @@ def historial():
     return render_template('dashboard.html')
 
 @app.route('/eliminar', methods=['POST'])
+@login_require
 def eliminar():
     
     if request.method == 'POST':
@@ -127,6 +141,7 @@ def cuenta():
 
 @app.route('/cerrar')
 def cerrar():
+    session['logged_in'] = None
     session.clear()
     return redirect('/')
 
@@ -187,13 +202,14 @@ def registrar():
             'fecha' : date['fecha'],
             'ccv'   : date['ccv'],
         })
-        
+        session['logged_in'] = True
         return redirect(url_for('menu'))
 
 
     return render_template('registro.html', validacion = None)
 
 @app.route('/menu', methods=['GET', 'POST'])
+@login_require
 def menu():
     return render_template('dashboard.html')
 
@@ -209,11 +225,14 @@ def inicio():
         })
     
         if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            session['logged_in'] = True
             return redirect(url_for('menu'))
         else:
             return render_template('inicio.html', validacion = 'No se pudo conectar')
             
     return render_template('inicio.html')
+
+
 
 
  
