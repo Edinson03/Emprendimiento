@@ -14,6 +14,36 @@ app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y s
 client = pymongo.MongoClient('mongodb://localhost:27017/users')
 db = client.user_login
 
+
+@app.route('/agregar',methods=['POST'])
+def agregar():
+    if request.method == 'POST':
+        
+        date = {
+            'placa'  : request.form.get('placa'),
+            'modelo' : request.form.get('modelo'),
+            'marca' : request.form.get('marca'),
+            'fecha'  : request.form.get('fecha'),
+            'descripcion'  : request.form.get('descripcion'),
+   
+        }
+        
+
+        # Insertar el usuario en la base de datos
+        db.db.motos.insert_one({
+            'placa'  : date['placa'],
+            'modelo' : date['modelo'],
+            'marca' : date['marca'],
+            'fecha'  : date['fecha'],
+            'descripcion'  : date['descripcion'],
+
+        })
+        
+        return redirect(url_for('menu'))
+
+
+    return render_template('index.html', validacion = None)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -26,23 +56,10 @@ def buscar():
 def cuenta():
     return render_template('adcuenta.html')
 
-@app.route('/inicio', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        correo = request.form['correo']
-        contraseña = request.form['contrasena']
-
-        # Buscar el usuario en la base de datos
-        usuario_encontrado = db.db.usuarios.find_one({'correo': correo})
-
-        if usuario_encontrado and 'contraseña' in usuario_encontrado:
-            # Verificar la contraseña con check_password_hash
-            if bcrypt.check_password_hash(usuario_encontrado['contraseña'], contraseña.encode('utf-8')):
-                session['correo'] = correo
-                return redirect(url_for('home'))
-
-    return render_template('inicio.html')
-
+@app.route('/cerrar')
+def cerrar():
+    session.clear()
+    return redirect('/')
 
 @app.route('/registrar',methods=['GET', 'POST'])
 def registrar():
@@ -105,17 +122,35 @@ def registrar():
 
     return render_template('registro.html', validacion = None)
 
-@app.route('/menu', methods=['GET'])
+@app.route('/menu', methods=['GET', 'POST'])
 def menu():
     return render_template('dashboard.html')
 
-@app.route('/inicio')
+@app.route('/inicio', methods=['POST', 'GET'])
 def inicio():
+    if request.method == 'POST':
+        correo = request.form['email']
+        contraseña = request.form['password']
+
+        
+        user = db.db.usuarios.find_one({
+        "email": request.form.get('email')
+        })
+    
+        if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
+            return redirect(url_for('menu'))
+        else:
+            return render_template('inicio.html', validacion = 'No se pudo conectar')
+            
     return render_template('inicio.html')
 
+
+ 
 def validateCustomer(customer, confirm):
     print(customer)
     error_message = None
+    
+    # Validar Usuario
     if not customer['name']:
         error_message = "Please Enter your First Name !!"
     elif len (customer['name']) < 3:

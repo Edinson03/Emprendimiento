@@ -115,7 +115,7 @@
                     <a class="nav-link" href="{{url_for('cuenta')}}">Administrar Cuenta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('menu') }}">Cerrar sesion</a>
+                    <a class="nav-link" href="{{ url_for('cerrar') }}">Cerrar sesion</a>
                 </li>
 
             </ul>
@@ -142,7 +142,7 @@
                 <!-- Parte derecha - Área de formulario -->
                 <div class="col-lg-6 form-section">
                     <!-- Formulario Agregar Mantenimiento -->
-                    <form id="form-agregar-mantenimiento" class="active">
+                    <form class="active" method='POST' action='{{url_for('agregar')}}'>
                         <h2>Agregar Mantenimiento:</h2>
                         <div class="mb-3">
                             <label for="placa" class="form-label">Placa:</label>
