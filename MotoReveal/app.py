@@ -122,6 +122,9 @@ def eliminar():
 def index():
     return render_template('index.html')
 
+# Gestion de la Cuenta
+
+
 @app.route('/buscar', methods=['POST', 'GET'])
 def buscar():
     if request.method == 'POST':
@@ -136,7 +139,7 @@ def buscar():
 
 
 @app.route('/cuenta', methods=['POST', 'GET'])
-def cuenta():
+def cuenta(): 
     return render_template('adcuenta.html')
 
 @app.route('/cerrar')
@@ -202,6 +205,7 @@ def registrar():
             'fecha' : date['fecha'],
             'ccv'   : date['ccv'],
         })
+        
         session['logged_in'] = True
         return redirect(url_for('menu'))
 
