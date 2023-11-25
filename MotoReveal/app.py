@@ -122,7 +122,7 @@ def eliminar():
 
 @app.route('/')
 def index():
-    return render_template('adcuenta.html')
+    return render_template('index.html')
 
 # Gestion de la Cuenta
 

@@ -71,7 +71,7 @@
                         <a class="nav-link" href="https://andresqagudelo.github.io/Moto.github.io/">Conocenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('index')}}">Volver</a>
+                        <a class="nav-link" href="{{url_for('menu')}}">Volver</a>
                     </li>
                 </ul>
             </div>
@@ -197,116 +197,6 @@
             </div>
         </div>
 
-
-        <!-- Preferencias de Notificación -->
-        <div class="container mt-5"> 
-            <!-- Acordeón para la sección "Preferencias de Notificación" -->
-            <div id="accordion">
-    
-                <!-- Sección: Preferencias de Notificación -->
-                <div class="card mb-4">
-                    <div class="card-header" id="headingNotificaciones">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNotificaciones" aria-expanded="false" aria-controls="collapseNotificaciones">
-                                Preferencias de Notificación
-                            </button>
-                        </h5>
-                    </div>
-    
-                    <div id="collapseNotificaciones" class="collapse" aria-labelledby="headingNotificaciones" data-parent="#accordion">
-                        <div class="card-body">
-                            <!-- Formulario para preferencias de notificación -->
-                            <form>
-                                <!-- Notificaciones por Correo Electrónico -->
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="emailNotifications" checked>
-                                    <label class="form-check-label" for="emailNotifications">Recibir notificaciones por correo electrónico</label>
-                                </div>
-    
-                                <!-- Notificaciones por Mensajes de Texto -->
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="smsNotifications">
-                                    <label class="form-check-label" for="smsNotifications">Recibir notificaciones por mensajes de texto</label>
-                                </div>
-    
-                                <!-- Preferencias de Frecuencia -->
-                                <div class="form-group">
-                                    <label for="notificationFrequency">Frecuencia de Notificaciones:</label>
-                                    <select class="form-control" id="notificationFrequency">
-                                        <option value="diario">Diario</option>
-                                        <option value="semanal">Semanal</option>
-                                        <option value="mensual">Mensual</option>
-                                    </select>
-                                </div>
-    
-                                <!-- Botón para guardar cambios -->
-                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-    
-                <!-- Puedes agregar más secciones siguiendo el mismo patrón -->
-    
-            </div>
-        </div>
-    
-                <!-- Sección: Preferencias de Notificación -->
-        <!-- Acordeón para la sección "Suscripciones y Membresías" -->
-        <div id="accordion">
-
-            <!-- Sección: Suscripciones y Membresías -->
-            <div class="container mt-5">        
-                <!-- Acordeón para la sección "Suscripciones y Membresías" -->
-                <div id="accordion">
-        
-                    <!-- Sección: Suscripciones y Membresías -->
-                    <div class="card mb-4">
-                        <div class="card-header" id="headingSuscripciones">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSuscripciones"
-                                    aria-expanded="false" aria-controls="collapseSuscripciones">
-                                    Suscripciones y Membresías
-                                </button>
-                            </h5>
-                        </div>
-        
-                        <div id="collapseSuscripciones" class="collapse" aria-labelledby="headingSuscripciones"
-                            data-parent="#accordion">
-                            <div class="card-body">
-                                <!-- Formulario para suscripciones y membresías -->
-                                <form>
-                                    <!-- Suscripciones Activas -->
-                                    <div class="form-group">
-                                        <label for="activeSubscriptions">Suscripciones Activas:</label>
-                                        <select class="form-control" id="activeSubscriptions" multiple>
-                                            <option value="subscription1">Suscripción Premium</option>
-                                            <option value="subscription2" selected>Suscripción Básica</option>
-                                            <!-- Agrega más opciones según sea necesario -->
-                                        </select>
-                                    </div>
-        
-                                    <!-- Membresías -->
-                                    <div class="form-group">
-                                        <label for="memberships">Membresías:</label>
-                                        <select class="form-control" id="memberships" multiple>
-                                            <option value="membership1">Membresía Oro</option>
-                                            <option value="membership2" selected>Membresía Plata</option>
-                                            <!-- Agrega más opciones según sea necesario -->
-                                        </select>
-                                    </div>
-        
-                                    <!-- Botón para guardar cambios -->
-                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Puedes agregar más secciones siguiendo el mismo patrón -->
-        
-                </div>
-            </div>
         <!-- Cierre de Sesión y Eliminación de Cuenta -->
         <div class="container mt-5">    
             <!-- Cierre de Sesión y Eliminación de la Cuenta -->
@@ -378,84 +268,40 @@
                 </div>
             </div>
         </div>
-        <!-- Personalización del Perfil -->
-        <div class="container mt-5">
-             <!-- Acordeón para la sección "Personalización del Perfil" -->
-            <div id="accordion">
-    
-                <!-- Sección: Personalización del Perfil -->
-                <div class="card mb-4">
-                    <div class="card-header" id="headingPerfil">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapsePerfil" aria-expanded="false" aria-controls="collapsePerfil">
-                                Personalización del Perfil
-                            </button>
-                        </h5>
-                    </div>
-    
-                    <div id="collapsePerfil" class="collapse" aria-labelledby="headingPerfil" data-parent="#accordion">
-                        <div class="card-body">
-                            <!-- Formulario para personalización del perfil -->
-                            <form>
-                                <!-- Nombre -->
-                                <div class="form-group">
-                                    <label for="fullName">Nombre Completo:</label>
-                                    <input type="text" class="form-control" id="fullName" placeholder="Nombre Completo">
-                                </div>
-    
-                                <!-- Imagen de Perfil -->
-                                <div class="form-group">
-                                    <label for="profileImage">Imagen de Perfil:</label>
-                                    <input type="file" class="form-control-file" id="profileImage">
-                                </div>
-    
-                                <!-- Color de Fondo -->
-                                <div class="form-group">
-                                    <label for="backgroundColor">Color de Fondo:</label>
-                                    <input type="color" class="form-control" id="backgroundColor">
-                                </div>
-    
-                                <!-- Guardar Cambios -->
-                                <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-
-    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
-        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Encuentranos</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>Pereira, Risaralda</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+57 321 456 7890</p>
-                <p class="m-0"><i class="fa fa-envelope mr-2"></i>edinson.rodriguez@utp.edu.co</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Conocenos</h4>
-                <p>Síguenos en nuestras redes sociales</p>
-                <div class=" justify-content-around">
-                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Porque elegirnos</h4>
-                <img src="static/img/logo.png" alt="Imagen Representativa" class="img-fluid mb-4" style="max-height: 40px;">
-                <p class="text-white mb-4" style="letter-spacing: 3px;">Transformamos tu experiencia para que cada momento sea una aventura inolvidable. Descubre la excelencia en servicio que nos distingue.</p>
-                <div class="w-100">
-                </div>
+<!-- Footer --> 
+<div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+    <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+        <div class="col-lg-4 col-md-6 mb-5 text-center">
+            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Encuentranos</h4>
+            <p><i class="fa fa-map-marker-alt mr-2"></i>Pereira, Risaralda</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>+57 321 456 7890</p>
+            <p class="m-0"><i class="fa fa-envelope mr-2"></i>revealmoto@gmail.com</p>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5 text-center">
+            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Conocenos</h4>
+            <p>Síguenos en nuestras redes sociales</p>
+            <div class=" justify-content-around">
+                <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-lg-square" href="https://www.instagram.com/reveal_moto/"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-            <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Domain</a>. All Rights Reserved.</a></p>
-            <p class="m-0 text-white">Designed by <a class="font-weight-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+        <div class="col-lg-4 col-md-12 mb-5 text-center">
+            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Porque elegir</h4>
+            <img src="static/img/logo.png" alt="Imagen Representativa" class="img-fluid mb-4" style="max-height: 40px;">
+            <p class="text-white mb-4" style="letter-spacing: 3px;">Transformamos tu experiencia para que cada momento sea una aventura inolvidable. Descubre la excelencia en servicio que nos distingue.</p>
+            <div class="w-100">
+            </div>
         </div>
     </div>
+    <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Domain</a>. Todos los derechos reservados.</a></p>
+        <p class="m-0 text-white">Diseñado por <a class="font-weight-bold" href="#">UTP-Emprendimiento</a></p>
+    </div>
+</div>
+<!-- Fin Footer -->
     
 
     <!-- Enlaces a scripts y archivos de JavaScript según sea necesario -->
