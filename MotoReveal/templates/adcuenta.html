@@ -57,6 +57,29 @@
 </head>
 
 <body>
+ <!-- barra de navegacion  -->
+        <nav class="navigation navbar navbar-expand-lg navbar-dark" style="background: rgba(51, 33, 29, .8);">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav ml-auto w-100 justify-content-around">
+                    <li class="navbar-brand">
+                        <img src="static/img/logo.png" alt="LOgo" class="img-fluid" style="max-height: 40px">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://andresqagudelo.github.io/Moto.github.io/">Conocenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('index')}}">Volver</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+<!-- fin barra de navegacion -->
+
+
+<!-- TITULO -->
     <h2 class=" text-center mb-4 page-title">Administrar Cuenta</h2>
     <div class="container mt-5 bg-custom" style="padding:40px"  >
         <p class="text-white mb-4" >Bienvenido a la configuración.</p>
@@ -410,16 +433,14 @@
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Encuentranos</h4>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>Pereira, Risaralda</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+57 321 456 7890</p>
-                <p class="m-0"><i class="fa fa-envelope mr-2"></i>luz@utp.edu.co</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>edinson.rodriguez@utp.edu.co</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Conocenos</h4>
                 <p>Síguenos en nuestras redes sociales</p>
                 <div class=" justify-content-around">
                     <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-light btn-lg-square" href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 mb-5">
