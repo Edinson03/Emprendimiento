@@ -240,6 +240,19 @@ def registrar():
 
     return render_template('registro.html', validacion = None)
 
+
+@app.route('/delete', methods = ['POST'])
+def delete():
+    if request.method == 'POST':
+        db.db.usuarios.delete_one({
+            'email': request.form.get('email')
+        })
+
+        return redirect('/')
+    return render_template('dashboard.html')
+    
+    
+
 @app.route('/menu', methods=['GET', 'POST'])
 @login_require
 def menu():

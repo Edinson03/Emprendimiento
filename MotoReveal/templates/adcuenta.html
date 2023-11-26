@@ -58,24 +58,28 @@
 
 <body>
  <!-- barra de navegacion  -->
-        <nav class="navigation navbar navbar-expand-lg navbar-dark" style="background: rgba(51, 33, 29, .8);">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-                <ul class="navbar-nav ml-auto w-100 justify-content-around">
-                    <li class="navbar-brand">
-                        <img src="static/img/logo.png" alt="LOgo" class="img-fluid" style="max-height: 40px">
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://andresqagudelo.github.io/Moto.github.io/">Conocenos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('menu')}}">Volver</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <nav class="navigation navbar navbar-expand-lg navbar-dark" style="background: rgba(51, 33, 29, .8);">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav ml-auto w-100 justify-content-around">
+                <li class="navbar-brand">
+                    <img src="static/img/logo.png" alt="LOgo" class="img-fluid" style="max-height: 40px">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://andresqagudelo.github.io/Moto.github.io/">Conocenos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('menu')}}">Volver</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('cerrar') }}">Cerrar sesion</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
 <!-- fin barra de navegacion -->
 
 
@@ -128,8 +132,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                         </form>
-                        <!-- Cambiar contraseña -->
-                        <button class="btn btn-link">Cambiar Contraseña</button>
                     </div>
                 </div>
             </div>
@@ -204,13 +206,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Cierre de Sesión y Eliminación de la Cuenta</h4>
                     <!-- Formulario para cierre de sesión y eliminación de la cuenta -->
-                    <form>
-                        <!-- Cierre de Sesión -->
-                        <div class="form-group">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#logoutModal">
-                                Cerrar Sesión
-                            </button>
-                        </div>
+                    <form method='POST' action="/delete">
+
     
                         <!-- Eliminación de la Cuenta -->
                         <div class="form-group">
@@ -255,11 +252,16 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+
                                         ¿Estás seguro de que quieres eliminar tu cuenta permanentemente?
                                     </div>
+                                    
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-outline-danger">Eliminar Cuenta</button>
+                                        
+                                        <form action="/delete" method='POST'>
+                                            <input type="text" class="form-control" placeholder="Escriba su correo" name="email">
+                                            <button type="submit" class="btn btn-outline-danger">Eliminar Cuenta</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
