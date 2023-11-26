@@ -14,8 +14,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave_secreta'  # Cambia esto a una clave segura y secreta
 
 #Database
-#client = pymongo.MongoClient('mongodb+srv://revealmoto:3gdYFc0bKngQOK11@cluster0.g8e9qsh.mongodb.net/')
-client = pymongo.MongoClient('mongodb://localhost:27017/users')
+client = pymongo.MongoClient('mongodb+srv://revealmoto:3gdYFc0bKngQOK11@cluster0.g8e9qsh.mongodb.net/')
+#client = pymongo.MongoClient('mongodb://localhost:27017/users')
 db = client.user_login
 
 # Decorators
